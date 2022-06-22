@@ -1,0 +1,37 @@
+create database BD_Zacarias_Perez;
+
+use BD_Zacarias_Perez;
+
+create table tipo
+(
+	codigo_tipo int primary key,
+    descripcion varchar(50)
+);
+
+create table mascota
+(
+	id_mascota int primary key auto_increment,
+    nombre varchar(60),
+    codigo_tipo int ,
+    peso double,
+    fecha_Nacimiento date,
+    foreign key (codigo_tipo) references tipo (codigo_tipo)
+);
+
+insert into tipo values(1,'Labrador');
+insert into tipo values(2,'chihuahua');
+insert into tipo values(3,'bóxer');
+insert into tipo values(4,'bulldog');
+insert into tipo values(5,'Obejero');
+select * from tipo;
+select * from mascota;
+insert into mascota values(null,'Kumi',3,1.5,'2002/01/01');
+insert into mascota values(null,'Loki',1,5.2,'2002/11/02');
+insert into mascota values(null,'Max',3,1.8,'2002/01/23');
+insert into mascota values(null,'Ollie',3,1.7,'2002/03/11');
+insert into mascota values(null,'Simbul',5,1.5,'2012/06/18');
+insert into mascota values(null,'Toby',4,2.6,'2022/03/04');
+
+select count(*) as Cantidad,t.descripcion from mascota as m
+inner join tipo as t on m.codigo_tipo = t.codigo_tipo
+group by t.descripcion;

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listadoZacariasPerez" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4f53371-e4a6-42c4-9518-a44b83796688">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YmRfemFjYXJpYXNfcGVyZXoudGlwbyBBUyAsNjQwLDE0NSw4OGUzNmY3Yy1jYThmLTQ3YzktODU4
+Yy1kMTc4ZmQ0NzgwYmU7YmRfemFjYXJpYXNfcGVyZXoubWFzY290YSBBUyAsMTI2LDIxNyxjMDZh
+ZGI1ZC02NzkzLTRhNWEtYWQ5Mi0xNjI0ZTM5NWQ4YjQ7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Connection Mysql"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT count(*) as Cantidad,bd_zacarias_perez.tipo.descripcion
+FROM bd_zacarias_perez.mascota
+	INNER JOIN bd_zacarias_perez.tipo ON 
+	 bd_zacarias_perez.mascota.codigo_tipo = bd_zacarias_perez.tipo.codigo_tipo
+	 group by bd_zacarias_perez.tipo.descripcion]]>
+	</queryString>
+	<field name="Cantidad" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="Cantidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cantidad"/>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tipo"/>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="373d5068-ff02-4855-ac63-148c186b012e"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="9d1c6666-0ae4-4ff7-b650-0b721c75b1b4"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CiberPet]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<summary>
+		<band height="326">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="0" width="550" height="326" uuid="73e27e29-67c8-46e4-b27a-ff11aebd25f9"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{descripcion}]]></keyExpression>
+					<valueExpression><![CDATA[$F{Cantidad}]]></valueExpression>
+					<labelExpression><![CDATA[$F{Cantidad}.toString()]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>
